@@ -13,7 +13,7 @@ MAINTAINER Calvin.Chen
 #                            Environment Variables                            #
 ###############################################################################
 # app directory
-ENV APP_DIR /fashion
+ENV APP_DIR /smart-store
 
 # new user
 ENV DOCKER_USER=inlay
@@ -66,6 +66,8 @@ USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 RUN npm install
+
+VOLUME /home/${DOCKER_USER}/${APP_DIR}
 
 EXPOSE ${APP_PORT}
 

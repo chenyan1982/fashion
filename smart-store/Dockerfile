@@ -13,7 +13,7 @@ MAINTAINER Calvin.Chen
 #                            Environment Variables                            #
 ###############################################################################
 # app directory
-ENV APP_DIR /fashion/smart-store
+ENV APP_DIR /smart-store
 
 # new user
 ENV DOCKER_USER=inlay
@@ -47,8 +47,6 @@ RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/*
 USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
-
-VOLUME /home/${DOCKER_USER}/${APP_DIR}
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 

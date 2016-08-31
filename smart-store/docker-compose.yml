@@ -1,5 +1,9 @@
 smart-store:
   image: smart-store:latest
+  volumes_from:
+  - node-modules
+node-modules:
+  image: node-modules:latest
   command: npm run dev
   privileged: false
   restart: always
