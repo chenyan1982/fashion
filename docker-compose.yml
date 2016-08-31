@@ -10,5 +10,3 @@ fashion:
   - smart-store
 smart-store:
   image: smart-store:latest
-  volumes:
-  - /home/${DOCKER_USER}/${APP_DIR}

@@ -13,7 +13,7 @@ MAINTAINER Calvin.Chen
 #                            Environment Variables                            #
 ###############################################################################
 # app directory
-ENV APP_DIR /smart-store
+ENV APP_DIR /fashion/smart-store
 
 # new user
 ENV DOCKER_USER=inlay
