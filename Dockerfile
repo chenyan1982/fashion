@@ -69,7 +69,7 @@ RUN npm install
 
 EXPOSE ${APP_PORT}
 
-CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
+# CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
 ###############################################################################
 #                                    End                                      #
