@@ -1,12 +1,12 @@
 smart-store:
   image: smart-store:latest
+  command: npm run dev  
+  ports:
+  - 3000:3000
+  - '22'
   volumes_from:
   - node-modules
 node-modules:
   image: node-modules:latest
-  command: npm run dev
   privileged: false
   restart: always
-  ports:
-  - 3000:3000
-  - '22'

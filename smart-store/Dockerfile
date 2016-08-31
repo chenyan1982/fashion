@@ -21,6 +21,9 @@ ENV DOCKER_USER=inlay
 # Password for the root
 ENV ROOT_USER_PASSWORD=root
 
+# service port
+ENV APP_PORT 3000
+
 ###############################################################################
 #                                Instructions                                 #
 ###############################################################################
@@ -37,7 +40,7 @@ RUN echo "root:${ROOT_USER_PASSWORD}" | chpasswd
 # Create new user
 RUN useradd --user-group --create-home --shell /bin/false ${DOCKER_USER}
 
-COPY ./smart-store /home/${DOCKER_USER}/${APP_DIR}/
+COPY . /home/${DOCKER_USER}/${APP_DIR}/
 
 RUN rm -f package.json npm-shrinkwrap.json
 
@@ -47,6 +50,8 @@ RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/*
 USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
+
+EXPOSE ${APP_PORT}
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
