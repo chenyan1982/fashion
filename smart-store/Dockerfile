@@ -50,7 +50,7 @@ WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
 VOLUME /home/${DOCKER_USER}/${APP_DIR}
 
-# CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
+CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
 ###############################################################################
 #                                    End                                      #

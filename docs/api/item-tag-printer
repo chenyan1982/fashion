@@ -1,3 +1,6 @@
 FORMAT: 1A
 # Item Tag Printer API
-提供 RFID 标签打印服务
+提供商品 RFID 标签打印服务
+| API列表       |类型          | 描述  |
+| ------------- |:-------------:| -----:|
+| fashion.user.printer.printing | 免费  | 打印一张标签 |
