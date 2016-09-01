@@ -61,9 +61,9 @@ RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/**
 # Set the user id
 USER ${DOCKER_USER}
 
-WORKDIR /home/${DOCKER_USER}/${APP_DIR}
-
 RUN npm install -g aglio
+
+WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
