@@ -48,8 +48,6 @@ WORKDIR node-v5.9.1/
 RUN ./configure \
 	&& make install
 
-RUN npm install -g aglio
-
 # Set the root password
 RUN echo "root:${ROOT_USER_PASSWORD}" | chpasswd
 
@@ -58,13 +56,16 @@ RUN useradd --user-group --create-home --shell /bin/false ${DOCKER_USER}
 
 COPY ./smart-store/ /home/${DOCKER_USER}/${APP_DIR}/
 
-RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/** && \
-	chown -R ${DOCKER_USER}:${DOCKER_USER} /usr/local/lib/node_modules/**
+RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/**
 
 # Set the user id
 USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
+
+VOLUME /home/${DOCKER_USER}/${APP_DIR}/src
+
+RUN npm install
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
