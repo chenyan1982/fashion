@@ -64,7 +64,7 @@ USER ${DOCKER_USER}
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 RUN npm install
 
-VOLUME /home/${DOCKER_USER}/${APP_DIR}/node-modules
+VOLUME /home/${DOCKER_USER}/${APP_DIR}/node_modules
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 

@@ -47,7 +47,7 @@ RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/*
 # Set the user id
 USER ${DOCKER_USER}
 
-WORKDIR /home/${DOCKER_USER}/${APP_DIR}/node-modules
+WORKDIR /home/${DOCKER_USER}/${APP_DIR}/node_modules
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
