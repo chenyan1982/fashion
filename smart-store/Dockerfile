@@ -21,6 +21,8 @@ ENV DOCKER_USER=inlay
 # Password for the root
 ENV ROOT_USER_PASSWORD=root
 
+# Password for the root
+ENV PORT=3000
 ###############################################################################
 #                                Instructions                                 #
 ###############################################################################
@@ -64,6 +66,8 @@ USER ${DOCKER_USER}
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
 VOLUME /home/${DOCKER_USER}/${APP_DIR}/src
+
+EXPORT ${PORT}
 
 RUN npm install
 
