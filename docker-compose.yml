@@ -1,9 +1,13 @@
-smart-store:
-  image: smart-store:latest
-  command: npm run dev  
+fashion:
+  image: fashion:latest
+  command: npm run dev
   ports:
   - 3000:3000
   - '22'
+  volumes_from:
+  - smart-store
+smart-store:
+  image: smart-store:latest
   volumes_from:
   - node-modules
 node-modules:
