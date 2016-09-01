@@ -63,6 +63,8 @@ USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
+RUN npm install -g aglio
+
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
 ###############################################################################
