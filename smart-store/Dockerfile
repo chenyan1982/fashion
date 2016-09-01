@@ -57,7 +57,7 @@ RUN useradd --user-group --create-home --shell /bin/false ${DOCKER_USER}
 COPY ./smart-store/ /home/${DOCKER_USER}/${APP_DIR}/
 
 RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/** && \
-	chown -R ${DOCKER_USER}:${DOCKER_USER} /usr/local/lib/node_modules
+	chown -R ${DOCKER_USER}:${DOCKER_USER} /usr/local/lib/node_modules/**
 
 # Set the user id
 USER ${DOCKER_USER}
