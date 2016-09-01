@@ -48,6 +48,8 @@ WORKDIR node-v5.9.1/
 RUN ./configure \
 	&& make install
 
+RUN npm install -g aglio
+
 # Set the root password
 RUN echo "root:${ROOT_USER_PASSWORD}" | chpasswd
 
@@ -61,8 +63,6 @@ RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/** && \
 
 # Set the user id
 USER ${DOCKER_USER}
-
-RUN npm install -g aglio
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
