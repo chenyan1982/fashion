@@ -67,7 +67,7 @@ WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
 VOLUME /home/${DOCKER_USER}/${APP_DIR}/src
 
-EXPORT ${PORT}
+EXPOSE ${PORT}
 
 RUN npm install
 
