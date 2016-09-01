@@ -29,7 +29,24 @@ RUN apt-get update -yq \
 	&& apt-get upgrade -yq
 
 RUN apt-get install -yq --no-install-recommends \
-        adduser
+        gcc \
+        g++ \
+        make \
+        python \
+        adduser \
+				git \
+				wget
+
+# Download node source package and install
+RUN wget https://nodejs.org/download/release/v5.9.1/node-v5.9.1.tar.gz
+
+RUN tar zxvf node-v5.9.1.tar.gz \
+	&& rm -f node-v5.9.1.tar.gz
+
+WORKDIR node-v5.9.1/
+
+RUN ./configure \
+	&& make install
 
 # Set the root password
 RUN echo "root:${ROOT_USER_PASSWORD}" | chpasswd
@@ -46,7 +63,7 @@ USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
-VOLUME /home/${DOCKER_USER}/${APP_DIR}
+RUN npm install -g aglio
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 

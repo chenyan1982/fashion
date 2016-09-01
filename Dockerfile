@@ -13,16 +13,13 @@ MAINTAINER Calvin.Chen
 #                            Environment Variables                            #
 ###############################################################################
 # app directory
-ENV APP_DIR /fashion
+ENV APP_DIR /smart-store
 
 # new user
 ENV DOCKER_USER=inlay
 
 # Password for the root
 ENV ROOT_USER_PASSWORD=root
-
-# service port
-ENV APP_PORT 3000
 
 ###############################################################################
 #                                Instructions                                 #
@@ -58,12 +55,16 @@ RUN echo "root:${ROOT_USER_PASSWORD}" | chpasswd
 # Create new user
 RUN useradd --user-group --create-home --shell /bin/false ${DOCKER_USER}
 
+COPY ./smart-store/package.json ./smart-store/npm-shrinkwrap.json /home/${DOCKER_USER}/${APP_DIR}/
+RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/**
+
 # Set the user id
 USER ${DOCKER_USER}
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
+RUN npm install
 
-RUN npm install -g aglio
+VOLUME /home/${DOCKER_USER}/${APP_DIR}/node_modules
 
 CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
 
