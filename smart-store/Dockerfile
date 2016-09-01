@@ -42,12 +42,12 @@ RUN useradd --user-group --create-home --shell /bin/false ${DOCKER_USER}
 
 COPY ./smart-store/ /home/${DOCKER_USER}/${APP_DIR}/
 
-RUN rm -f package.json npm-shrinkwrap.json
-
 RUN chown -R ${DOCKER_USER}:${DOCKER_USER} /home/${DOCKER_USER}/*
 
 # Set the user id
 USER ${DOCKER_USER}
+
+WORKDIR /home/${DOCKER_USER}/${APP_DIR}/node-modules
 
 WORKDIR /home/${DOCKER_USER}/${APP_DIR}
 
