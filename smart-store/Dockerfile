@@ -40,7 +40,7 @@ RUN echo "root:${ROOT_USER_PASSWORD}" | chpasswd
 # Create new user
 RUN useradd --user-group --create-home --shell /bin/false ${DOCKER_USER}
 
-COPY ./ /home/${DOCKER_USER}/${APP_DIR}/
+COPY ./smart-store/ /home/${DOCKER_USER}/${APP_DIR}/
 
 RUN rm -f package.json npm-shrinkwrap.json
 
